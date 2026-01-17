@@ -1,0 +1,8 @@
+{
+  "name": "DigitalZap - Plataforma SaaS White Label",
+  "description": "Uma página de vendas de alta conversão para a plataforma DigitalZap, apresentando funcionalidades de automação, CRM e revenda de software.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
