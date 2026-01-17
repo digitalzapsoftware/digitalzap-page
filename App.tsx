@@ -132,7 +132,7 @@ const App: React.FC = () => {
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/yOgM010lM4I?rel=0&modestbranding=1" 
+                src="https://www.youtube.com/embed/7RJ6ztnZhyg?rel=0&modestbranding=1" 
                 title="DigitalZap Video" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
