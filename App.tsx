@@ -36,10 +36,20 @@ import { IconWrapper } from './components/IconWrapper';
 
 const CHECKOUT_URL = "https://checkout.centerpag.com/pay/PPU38COUGTE";
 
-const SYSTEM_IMAGES = Array.from({ length: 12 }, (_, i) => ({
-  url: `https://picsum.photos/1200/800?random=${i + 10}`,
-  title: `Funcionalidade ${i + 1}`
-}));
+const SYSTEM_IMAGES = [
+  { url: 'https://picsum.photos/1200/800?random=101', title: 'Painel de Controle' },
+  { url: 'https://picsum.photos/1200/800?random=102', title: 'Gerenciamento de Conversas' },
+  { url: 'https://picsum.photos/1200/800?random=103', title: 'Relatórios e Métricas' },
+  { url: 'https://picsum.photos/1200/800?random=104', title: 'Gestão de Contatos' },
+  { url: 'https://picsum.photos/1200/800?random=105', title: 'Equipe e Permissões' },
+  { url: 'https://picsum.photos/1200/800?random=106', title: 'Etiquetas Personalizadas' },
+  { url: 'https://picsum.photos/1200/800?random=107', title: 'Automação de Chatbots' },
+  { url: 'https://picsum.photos/1200/800?random=108', title: 'Campanhas em Massa' },
+  { url: 'https://picsum.photos/1200/800?random=109', title: 'Fluxos de Trabalho' },
+  { url: 'https://picsum.photos/1200/800?random=110', title: 'Integrações Externas' },
+  { url: 'https://picsum.photos/1200/800?random=111', title: 'Configurações White Label' },
+  { url: 'https://picsum.photos/1200/800?random=112', title: 'Gerenciamento de Cobrança' },
+];
 
 const BENEFITS_ROW_1 = [
   { icon: <Users className="w-5 h-5 md:w-6 md:h-6" />, text: "10.000+ Clientes satisfeitos" },
@@ -125,7 +135,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-20 relative max-w-5xl mx-auto"
+            className="mt-20 relative max-w-5xl mx-auto px-2 sm:px-0"
           >
             <div className="absolute inset-0 bg-[#E04A1F]/10 blur-[120px] rounded-full"></div>
             <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl float-animation">
@@ -193,8 +203,6 @@ const App: React.FC = () => {
             </motion.div>
           </div>
         </div>
-
-        {/* Glossy Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-transparent to-gray-950 pointer-events-none z-10"></div>
       </section>
 
@@ -223,7 +231,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* NEW PWA SECTION */}
+      {/* PWA Section */}
       <section id="pwa" className="py-24 px-4 bg-gradient-to-r from-[#E04A1F]/10 to-transparent relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
           <motion.div 
@@ -289,17 +297,20 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* SYSTEM PHOTOS SLIDER SECTION - MOBILE OPTIMIZED BORDERS */}
-      <section id="fotos" className="py-24 px-2 md:px-4 bg-gray-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      {/* SYSTEM PHOTOS SLIDER SECTION - FULL WIDTH OPTIMIZED */}
+      <section id="fotos" className="py-24 px-0 sm:px-4 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-0">
+          <div className="text-center mb-12 sm:mb-16">
             <span className="text-[#E04A1F] font-bold tracking-widest uppercase text-sm">Visual Moderno</span>
             <h2 className="text-4xl md:text-5xl font-black mt-4 mb-6">Explore a Interface do <span className="text-[#E04A1F]">Sistema</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto italic">Veja como é fácil e intuitivo gerenciar seu negócio com a DigitalZap.</p>
+            <p className="text-gray-400 max-w-2xl mx-auto italic">Navegue pelas 12 principais telas da sua nova plataforma SaaS.</p>
           </div>
+        </div>
 
+        <div className="max-w-7xl mx-auto px-1 sm:px-0">
           <div className="relative group">
-            <div className="overflow-hidden rounded-xl md:rounded-3xl border border-white/10 shadow-2xl bg-white/5 p-1 md:p-4">
+            {/* Reduced padding on mobile (p-0.5) to maximize screen width */}
+            <div className="overflow-hidden rounded-xl md:rounded-3xl border border-white/10 shadow-2xl bg-white/5 p-0.5 md:p-4">
               <div className="relative aspect-video">
                 <AnimatePresence mode="wait">
                   <motion.img
@@ -313,38 +324,51 @@ const App: React.FC = () => {
                     alt={SYSTEM_IMAGES[currentSlide].title}
                   />
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none rounded-lg md:rounded-2xl"></div>
-                <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8">
-                  <p className="text-[#E04A1F] font-bold text-sm md:text-xl uppercase tracking-tighter flex items-center gap-2">
-                    <Eye size={16} className="md:w-5 md:h-5" /> {SYSTEM_IMAGES[currentSlide].title}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none rounded-lg md:rounded-2xl"></div>
+                
+                {/* Info badge with slide counter */}
+                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-xs font-bold text-white z-20">
+                  {currentSlide + 1} / {SYSTEM_IMAGES.length}
+                </div>
+
+                <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 z-20">
+                  <p className="text-[#E04A1F] font-black text-sm md:text-2xl uppercase tracking-tighter flex items-center gap-2 drop-shadow-md">
+                    <Eye size={18} className="md:w-6 md:h-6" /> {SYSTEM_IMAGES[currentSlide].title}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Navigation Buttons */}
+            {/* Navigation Buttons - More visible on tablet/desktop */}
             <button 
               onClick={prevSlide}
-              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-md p-2 md:p-4 rounded-full border border-white/10 text-white hover:bg-[#E04A1F] transition-all transform group-hover:scale-110 opacity-0 group-hover:opacity-100 hidden md:flex"
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-black/70 backdrop-blur-md p-3 md:p-5 rounded-full border border-white/10 text-white hover:bg-[#E04A1F] transition-all transform group-hover:scale-110 opacity-0 group-hover:opacity-100 hidden sm:flex z-30"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={nextSlide}
-              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-md p-2 md:p-4 rounded-full border border-white/10 text-white hover:bg-[#E04A1F] transition-all transform group-hover:scale-110 opacity-0 group-hover:opacity-100 hidden md:flex"
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-black/70 backdrop-blur-md p-3 md:p-5 rounded-full border border-white/10 text-white hover:bg-[#E04A1F] transition-all transform group-hover:scale-110 opacity-0 group-hover:opacity-100 hidden sm:flex z-30"
             >
               <ChevronRight size={24} />
             </button>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mt-8">
+            {/* Mobile Touch Swipe areas (Conceptual / Buttons) */}
+            <div className="sm:hidden flex justify-between absolute inset-x-0 top-1/2 -translate-y-1/2 px-2 pointer-events-none z-30">
+               <button onClick={prevSlide} className="pointer-events-auto bg-black/40 p-2 rounded-full"><ChevronLeft size={20} /></button>
+               <button onClick={nextSlide} className="pointer-events-auto bg-black/40 p-2 rounded-full"><ChevronRight size={20} /></button>
+            </div>
+
+            {/* Pagination Dots - Scrollable on very small screens if many */}
+            <div className="flex justify-center flex-wrap gap-1.5 sm:gap-2 mt-8 px-4">
               {SYSTEM_IMAGES.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
                   className={`h-1.5 rounded-full transition-all ${
-                    currentSlide === idx ? 'w-8 bg-[#E04A1F]' : 'w-2 bg-white/20'
+                    currentSlide === idx ? 'w-8 bg-[#E04A1F]' : 'w-1.5 sm:w-2 bg-white/20'
                   }`}
+                  aria-label={`Ir para slide ${idx + 1}`}
                 ></button>
               ))}
             </div>
